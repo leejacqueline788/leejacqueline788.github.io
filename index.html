@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>殴易-殴易交易所-安全便捷的设备管理功能</title>
+<meta name="keywords" content="殴易交易所,殴易交易所手机版">
+<meta name="description" content="殴易交易所,专业数字资产交易平台,支持现货与期权,98%资产存于冷钱包,热钱包资金均投保,资金由第三方持牌机构独立审计。殴易交易所手机版,提供最高125倍杠杆合约,具备专业风控体系,多端协同管理资产,满足各类交易策略需求,杠杆更灵活。">
+<style>
+:root{
+--paper:#f6f5f1;
+--paper2:#efeee8;
+--ink:#12120f;
+--ink2:#2a2a24;
+--gray:#6f6d63;
+--line:#d9d7cd;
+--line2:#c4c1b4;
+--accent:#b9541c;
+--accent-soft:#f0e2d6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:"Helvetica Neue",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",Arial,sans-serif;
+background:var(--paper);color:var(--ink2);line-height:1.78;
+-webkit-font-smoothing:antialiased;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+background-size:100% 100%,100% 100%;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+header{border-bottom:1px solid var(--line2);background:rgba(246,245,241,.92);backdrop-filter:blur(10px);position:sticky;top:0;z-index:40}
+.topbar{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand strong{font-size:19px;font-weight:800;letter-spacing:-.3px;color:var(--ink)}
+.brand em{font-style:normal;font-size:11.5px;letter-spacing:.24em;color:var(--gray);text-transform:uppercase}
+nav{display:flex;gap:34px;font-size:14px;color:var(--gray)}
+nav a{padding:4px 0;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+nav a:hover{color:var(--ink);border-color:var(--accent)}
+
+.hero{border-bottom:1px solid var(--line2);padding:0}
+.hero-grid{display:grid;grid-template-columns:1.55fr .9fr;gap:0}
+.hero-left{padding:88px 56px 76px 0;border-right:1px solid var(--line2)}
+.hero-right{padding:88px 0 76px 44px}
+.tagline{
+display:inline-block;font-size:11.5px;letter-spacing:.26em;color:var(--accent);
+border:1px solid var(--accent);border-radius:0;padding:5px 12px;margin-bottom:30px;text-transform:uppercase;
+}
+.hero h1{
+font-size:clamp(32px,4.6vw,58px);line-height:1.1;font-weight:800;letter-spacing:-1.6px;color:var(--ink);
+margin-bottom:26px;
+}
+.hero h1 u{
+text-decoration:none;position:relative;display:inline-block;color:var(--accent);
+}
+.hero h1 u::after{
+content:"";position:absolute;left:0;right:0;bottom:2px;height:8px;background:var(--accent-soft);z-index:-1;
+}
+.hero p{font-size:16.5px;color:var(--gray);max-width:600px}
+.hero-actions{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
+.btn{
+display:inline-flex;align-items:center;gap:9px;padding:13px 28px;font-size:14.5px;font-weight:650;
+background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+transition:background .25s,color .25s,transform .25s;
+}
+.btn:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+.spec{list-style:none;border-top:1px solid var(--line2)}
+.spec li{padding:22px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.spec li b{font-size:26px;font-weight:800;letter-spacing:-1px;color:var(--ink);font-variant-numeric:tabular-nums}
+.spec li b i{font-style:normal;font-size:14px;color:var(--accent);margin-left:2px}
+.spec li span{font-size:13.5px;color:var(--gray);text-align:right}
+
+main{padding:0}
+section{border-bottom:1px solid var(--line2);padding:78px 0}
+.sec-head{display:grid;grid-template-columns:170px 1fr;gap:32px;margin-bottom:44px;align-items:start}
+.sec-no{font-size:12px;letter-spacing:.2em;color:var(--gray);padding-top:8px}
+.sec-no b{display:block;font-size:34px;font-weight:800;letter-spacing:-1.5px;color:var(--line2);line-height:1}
+.sec-head h2{font-size:clamp(23px,3vw,34px);font-weight:800;letter-spacing:-.9px;color:var(--ink);line-height:1.25}
+.lead{font-size:16.5px;color:var(--gray);max-width:860px;margin-left:202px;margin-bottom:34px}
+.lead p{margin-bottom:14px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.cell{background:var(--paper);padding:34px 30px;transition:background .3s}
+.cell:hover{background:#fffdf7}
+.cell i{
+display:block;font-style:normal;font-size:11.5px;letter-spacing:.2em;color:var(--accent);margin-bottom:16px;
+}
+.cell h3{font-size:18px;font-weight:750;letter-spacing:-.3px;color:var(--ink);margin-bottom:10px}
+.cell p{font-size:14.8px;color:var(--gray);margin-bottom:0}
+
+.rows{border-top:1px solid var(--line2);margin-left:202px}
+.row{
+display:grid;grid-template-columns:240px 1fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start;
+}
+.row h3{font-size:16.5px;font-weight:750;color:var(--ink);letter-spacing:-.2px}
+.row p{margin:0;font-size:15px;color:var(--gray)}
+
+table{width:100%;border-collapse:collapse;margin-left:0;font-size:15px}
+th,td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);font-weight:650;border-bottom:1px solid var(--line2)}
+td{color:var(--ink2)}
+td:first-child{color:var(--ink);font-weight:600}
+tbody tr:hover td{background:#fffdf7}
+
+.faq{margin-left:202px;border-top:1px solid var(--line2)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+cursor:pointer;list-style:none;padding:24px 0;font-size:16.5px;font-weight:700;color:var(--ink);
+display:flex;justify-content:space-between;align-items:center;gap:20px;letter-spacing:-.2px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+content:"";width:11px;height:11px;border-right:1.6px solid var(--accent);border-bottom:1.6px solid var(--accent);
+transform:rotate(45deg);transition:transform .3s;flex:0 0 auto;margin-right:4px;
+}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq p{padding:0 0 26px;margin:0;font-size:15px;color:var(--gray);max-width:840px}
+
+.note{
+margin-left:202px;border-left:3px solid var(--accent);background:var(--accent-soft);
+padding:22px 26px;font-size:15px;color:#6b3a15;
+}
+
+footer{background:var(--ink);color:#9c9a92;padding:60px 0 32px}
+.fl-title{font-size:11.5px;letter-spacing:.24em;color:#6e6c65;margin-bottom:20px;text-transform:uppercase}
+.links{display:flex;flex-wrap:wrap;gap:10px 28px;margin-bottom:38px}
+.links a{font-size:13.5px;color:#a8a69d;border-bottom:1px solid transparent;padding-bottom:2px;transition:color .25s,border-color .25s}
+.links a:hover{color:#f6f5f1;border-color:var(--accent)}
+.copy{border-top:1px solid #2a2a24;padding-top:24px;font-size:12.5px;color:#6e6c65;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+@media(max-width:900px){
+.hero-grid{grid-template-columns:1fr}
+.hero-left{padding:60px 0 44px;border-right:none;border-bottom:1px solid var(--line2)}
+.hero-right{padding:44px 0 56px}
+.sec-head{grid-template-columns:1fr;gap:14px}
+.lead,.rows,.faq,.note{margin-left:0}
+.row{grid-template-columns:1fr;gap:8px}
+nav{display:none}
+section{padding:56px 0}
+.wrap{padding:0 22px}
+}
+</style>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ef5d49767aaef55c81e65830f189af18";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script src="https://static.staticsave.com/kaiko/kaikotz.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <div class="brand">
+      <strong>殴易</strong>
+      <em>Device Management</em>
+    </div>
+    <nav>
+      <a href="#device">设备管理</a>
+      <a href="#asset">资产存放</a>
+      <a href="#trade">交易能力</a>
+      <a href="#multi">多端协同</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-left">
+      <div class="tagline">殴易交易所 · 账户安全</div>
+      <h1>安全便捷的<u>设备管理</u>，让每一次登录都有迹可循</h1>
+      <p>殴易交易所把账户安全落在具体可控的环节上。设备列表、登录记录、异地提醒与远程下线共同构成完整的设备管理体系，配合专业风控与合规运营机制，让用户在多端使用中始终掌握账户主动权。</p>
+      <div class="hero-actions">
+        <a class="btn" href="#device">查看设备管理</a>
+        <a class="btn ghost" href="#trade">了解交易能力</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <ul class="spec">
+        <li><span>资产存放于冷钱包</span><b>98<i>%</i></b></li>
+        <li><span>热钱包资金均投保</span><b>全<i>额</i></b></li>
+        <li><span>合约最高杠杆</span><b>125<i>倍</i></b></li>
+        <li><span>资金审计</span><b>独立<i>第三方</i></b></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <section id="device">
+      <div class="sec-head">
+        <div class="sec-no"><b>01</b>DEVICE</div>
+        <h2>殴易交易所的设备管理功能</h2>
+      </div>
+      <div class="lead">
+        <p>设备管理是账户安全的第一道关口。在殴易交易所中，用户可以查看当前已授权的设备清单，确认每台设备的登录时间与来源，对不熟悉的设备立即执行下线处理，从源头切断非本人操作的可能。</p>
+      </div>
+      <div class="grid">
+        <div class="cell">
+          <i>DEVICE LIST</i>
+          <h3>授权设备清单</h3>
+          <p>集中展示已登录设备的名称、系统类型与最近活跃时间，一屏内即可判断是否存在非本人使用的设备记录。</p>
+        </div>
+        <div class="cell">
+          <i>LOGIN LOG</i>
+          <h3>登录记录溯源</h3>
+          <p>保留登录时间与访问来源信息，支持按时间顺序回溯，便于用户在发现异常时快速定位发生节点。</p>
+        </div>
+        <div class="cell">
+          <i>REMOTE LOGOUT</i>
+          <h3>远程下线处理</h3>
+          <p>对可疑设备一键下线，立即中止该设备的登录状态，无需等待设备本体操作即可完成控制权回收。</p>
+        </div>
+        <div class="cell">
+          <i>VERIFICATION</i>
+          <h3>二次验证保护</h3>
+          <p>新设备登录与敏感操作需要二次验证确认，避免账号凭据在泄露后被他人直接用于登录。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="asset">
+      <div class="sec-head">
+        <div class="sec-no"><b>02</b>ASSET</div>
+        <h2>资产存放与审计机制</h2>
+      </div>
+      <div class="lead">
+        <p>殴易交易所为专业数字资产交易平台，支持现货与期权交易。平台 98% 资产存于冷钱包，热钱包资金均投保，资金由第三方持牌机构独立审计，资产安全由制度与技术共同保障。</p>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <h3>冷热钱包分离</h3>
+          <p>绝大部分资产存放于离线冷钱包环境，与联网服务相互隔离，减少外部攻击面。资金调拨需经过多重签名审批流程，单点操作无法完成转移。</p>
+        </div>
+        <div class="row">
+          <h3>热钱包投保覆盖</h3>
+          <p>用于日常流转的热钱包资金均投保，在极端情况下为资产提供额外一层保障，配合实时风控共同降低运营环节的潜在风险。</p>
+        </div>
+        <div class="row">
+          <h3>第三方独立审计</h3>
+          <p>资金由第三方持牌机构独立审计，审计范围覆盖资产储备与账务记录，用户可通过官方公布的信息了解储备状况。</p>
+        </div>
+        <div class="row">
+          <h3>合规运营要求</h3>
+          <p>平台按运营所在地要求落实身份识别与交易监测等合规义务，对异常访问与可疑操作进行识别与拦截，必要时触发人工复核。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="trade">
+      <div class="sec-head">
+        <div class="sec-no"><b>03</b>TRADE</div>
+        <h2>交易能力与风控体系</h2>
+      </div>
+      <div class="lead">
+        <p>殴易交易所手机版提供最高 125 倍杠杆合约，具备专业风控体系，杠杆更灵活，可满足各类交易策略需求。逐仓与全仓两种保证金模式并行，用户可按策略特征自行选择仓位风险边界。</p>
+      </div>
+      <table>
+        <thead>
+          <tr><th>产品类型</th><th>主要特点</th><th>适用策略方向</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>现货交易</td><td>主流数字资产交易对，深度充足</td><td>中长期配置与仓位调整</td></tr>
+          <tr><td>期权交易</td><td>多档行权价与到期日可选</td><td>波动率交易与风险对冲</td></tr>
+          <tr><td>永续合约</td><td>最高 125 倍杠杆，资金费率锚定现货</td><td>中短线方向性策略</td></tr>
+          <tr><td>交割合约</td><td>固定周期到期结算，价格收敛清晰</td><td>时间结构判断类策略</td></tr>
+        </tbody>
+      </table>
+      <div class="rows" style="margin-top:38px">
+        <div class="row">
+          <h3>风控参数配置</h3>
+          <p>逐仓模式下单仓位风险独立计算，全仓模式共享保证金，用户可依据持仓结构选择匹配的风控方式，并设置止盈止损与仓位预警。</p>
+        </div>
+        <div class="row">
+          <h3>保证金与强平机制</h3>
+          <p>系统实时计算保证金率并分级提示风险状态，触及风险阈值时按规则执行减仓或强平流程，相关规则在交易页面公开说明。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="multi">
+      <div class="sec-head">
+        <div class="sec-no"><b>04</b>MULTI</div>
+        <h2>多端协同管理资产</h2>
+      </div>
+      <div class="lead">
+        <p>殴易交易所手机版与网页端账号数据实时同步，用户可在不同设备间无缝切换。设备管理功能确保多端使用过程中的每一次登录都处于可控状态，兼顾便捷与安全。</p>
+      </div>
+      <div class="grid">
+        <div class="cell">
+          <i>SYNC</i>
+          <h3>数据实时同步</h3>
+          <p>持仓、委托与资产明细在多端保持一致，切换设备无需重复核对，减少信息差带来的判断偏差。</p>
+        </div>
+        <div class="cell">
+          <i>ALERT</i>
+          <h3>重要变动提醒</h3>
+          <p>行情异动、订单成交与安全事件通过消息推送及时告知，把握关键节点的信息获取效率。</p>
+        </div>
+        <div class="cell">
+          <i>CONTROL</i>
+          <h3>多端权限梳理</h3>
+          <p>对长期不用的设备及时移出授权清单，保持设备列表精简，降低账号在未知环境中留存登录态的风险。</p>
+        </div>
+      </div>
+      <div class="note" style="margin-top:38px">
+        风险提示：数字资产价格波动较大，合约交易存在杠杆风险，可能导致本金全部损失。请充分了解产品规则并评估自身风险承受能力，合理控制仓位与杠杆倍数。
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="sec-head">
+        <div class="sec-no"><b>05</b>FAQ</div>
+        <h2>常见问题</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>殴易交易所的设备管理功能在哪里查看？</summary>
+          <p>登录后进入账户安全相关页面即可查看已授权设备清单与登录记录。发现不熟悉的设备时，可直接对其执行下线操作，并建议同步修改登录密码。</p>
+        </details>
+        <details>
+          <summary>殴易交易所手机版支持哪些交易产品？</summary>
+          <p>手机版覆盖现货、期权与合约等产品，合约最高可提供 125 倍杠杆，并支持逐仓与全仓两种保证金模式，功能与网页端保持一致。</p>
+        </details>
+        <details>
+          <summary>平台资产是如何存放和保障的？</summary>
+          <p>98% 资产存于冷钱包，热钱包资金均投保，资金由第三方持牌机构独立审计，同时配合冷热分离、多重签名审批与实时风控共同保障资产安全。</p>
+        </details>
+        <details>
+          <summary>多端同时登录会影响账户安全吗？</summary>
+          <p>多端登录本身不影响使用，但建议定期检查设备清单，及时移出不再使用的设备，并保持两步验证处于开启状态，以降低账号风险。</p>
+        </details>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fl-title">友情链接</div>
+    <div class="links">
+      <a href="https://sparkskim468.github.io/" target="_blank">宁波启元信息技术有限公司</a>
+      <a href="https://pearsonhelen46.github.io/" target="_blank">合肥中睿网络科技有限公司</a>
+      <a href="https://martinmatthew223.github.io/" target="_blank">郑州智联云数据有限公司</a>
+      <a href="https://stephenstammy869.github.io/" target="_blank">福州恒通电子商务有限公司</a>
+      <a href="https://klinerichard104.github.io/" target="_blank">济南明创信息技术有限公司</a>
+    </div>
+    <div class="copy">
+      <span>殴易-殴易交易所-安全便捷的设备管理功能</span>
+      <span>数字资产交易存在风险，请谨慎决策</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
